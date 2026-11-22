@@ -1,0 +1,210 @@
+[
+ {
+  "slug":"csss-pm-usp","name":"PM-USP Central Sector Scheme of Scholarship for College and University Students (CSSS)",
+  "department":"Ministry of Education – Department of Higher Education","scope":"Central","state":null,"scheme_type":"Merit-cum-Means",
+  "description":"Merit-cum-means scholarship for students who scored above the 80th percentile in their Class XII board stream, pursuing regular (non-distance) college or university courses.",
+  "eligibility_text":"Above 80th percentile of successful candidates in the relevant stream of your Class XII board; regular course (not correspondence/distance); family income up to ₹4.5 lakh per annum; not receiving any other scholarship or fee reimbursement. Diploma students are not eligible (per 2022-23 FAQ).",
+  "income_limit":450000,
+  "amount_text":"₹12,000 per year for the first three years of graduation; ₹20,000 per year at postgraduation (and 4th/5th year of technical courses).",
+  "benefits":"Direct Benefit Transfer to bank account.",
+  "documents":"Income certificate (fresh applicants), Class XII marksheet, bank account details, Aadhaar (Aadhaar seeding is required for payment). Confirm full list on NSP.",
+  "start_date":"2026-06-01","deadline":null,
+  "apply_url":"https://scholarships.gov.in","source_url":"https://scholarships.gov.in/public/schemeGuidelines/CSSS_GUIDLINES_06022024.pdf",
+  "verification_status":"verified",
+  "verification_note":"Income limit, amount and conditions confirmed from Ministry of Education guidelines/FAQ 2025-26. Scheme-specific 2026-27 deadline not confirmed – NSP general student deadline is 31-10-2026; check NSP for any extension.",
+  "rules":[
+   {"field":"edu_level","operator":"in","value":["Undergraduate","Postgraduate"],"hard":true,"message":"Only for college/university (UG/PG) students; diploma students are excluded."},
+   {"field":"annual_income","operator":"lte","value":450000,"hard":true,"message":"Family income must be up to ₹4.5 lakh per annum."},
+   {"field":"other_scholarship","operator":"eq","value":0,"hard":true,"message":"You must not be receiving any other scholarship or fee reimbursement."},
+   {"field":"_manual","operator":"manual","value":"percentile","hard":false,"message":"Verify you are above the 80th percentile in your Class XII board stream (a percentile, not a raw percentage, so it cannot be computed from marks)."},
+   {"field":"_manual","operator":"manual","value":"regular","hard":false,"message":"Confirm your course is regular (not distance/correspondence)."}
+  ]
+ },
+ {
+  "slug":"aicte-pragati","name":"AICTE Pragati Scholarship Scheme for Girl Students",
+  "department":"AICTE, Ministry of Education","scope":"Central","state":null,"scheme_type":"Merit-based",
+  "description":"Supports girl students in AICTE-approved technical degree or diploma programmes.",
+  "eligibility_text":"Girl students admitted to the first year of an AICTE-approved degree/diploma (or second year via lateral entry); family income up to ₹8 lakh per annum; maximum two girl children per family.",
+  "income_limit":800000,
+  "amount_text":"₹50,000 per year.","benefits":"Direct Benefit Transfer to the student's bank account.",
+  "documents":"Valid family income certificate from the competent State/UT authority; other documents per NSP checklist.",
+  "start_date":"2026-06-01","deadline":"2026-10-31",
+  "apply_url":"https://scholarships.gov.in","source_url":"https://aicte.gov.in/sites/default/files/pragatisaksham.pdf",
+  "verification_status":"verified",
+  "verification_note":"Rules from AICTE scheme document. 2026-27 dates reported on NSP-based sources (secondary); confirm on NSP.",
+  "rules":[
+   {"field":"gender","operator":"eq","value":"Female","hard":true,"message":"Only for girl students."},
+   {"field":"edu_level","operator":"in","value":["Diploma","Undergraduate"],"hard":true,"message":"Only for technical diploma or degree students."},
+   {"field":"fresh_entry","operator":"eq","value":true,"hard":true,"message":"Only for first-year admission (or second year via lateral entry)."},
+   {"field":"annual_income","operator":"lte","value":800000,"hard":true,"message":"Family income must be up to ₹8 lakh per annum."},
+   {"field":"aicte_approved","operator":"eq","value":1,"hard":true,"message":"Your college/course must be AICTE-approved."},
+   {"field":"_manual","operator":"manual","value":"two_girls","hard":false,"message":"Only two girl children per family can benefit – confirm this applies to you."}
+  ]
+ },
+ {
+  "slug":"aicte-saksham","name":"AICTE Saksham Scholarship Scheme for Specially-Abled Students",
+  "department":"AICTE, Ministry of Education","scope":"Central","state":null,"scheme_type":"Disability",
+  "description":"Supports students with disabilities in AICTE-approved technical degree or diploma programmes.",
+  "eligibility_text":"Disability of at least 40%; admitted to first year of an AICTE-approved degree/diploma (or second year via lateral entry); family income up to ₹8 lakh per annum.",
+  "income_limit":800000,
+  "amount_text":"₹50,000 per year.","benefits":"Direct Benefit Transfer to the student's bank account.",
+  "documents":"Disability certificate, family income certificate from State/UT authority; others per NSP checklist.",
+  "start_date":"2026-06-01","deadline":"2026-10-31",
+  "apply_url":"https://scholarships.gov.in","source_url":"https://www.myscheme.gov.in/schemes/sak-dip",
+  "verification_status":"verified",
+  "verification_note":"Rules from AICTE/myScheme; 2026-27 dates from NSP-based secondary sources.",
+  "rules":[
+   {"field":"disability_percent","operator":"gte","value":40,"hard":true,"message":"Requires a disability of at least 40%."},
+   {"field":"edu_level","operator":"in","value":["Diploma","Undergraduate"],"hard":true,"message":"Only for technical diploma or degree students."},
+   {"field":"fresh_entry","operator":"eq","value":true,"hard":true,"message":"Only for first-year admission (or second year via lateral entry)."},
+   {"field":"annual_income","operator":"lte","value":800000,"hard":true,"message":"Family income must be up to ₹8 lakh per annum."},
+   {"field":"aicte_approved","operator":"eq","value":1,"hard":true,"message":"Your college/course must be AICTE-approved."}
+  ]
+ },
+ {
+  "slug":"pm-yasasvi-pms","name":"PM YASASVI – Post-Matric Scholarship for OBC, EBC and DNT Students",
+  "department":"Ministry of Social Justice and Empowerment","scope":"Central","state":null,"scheme_type":"Post-Matric",
+  "description":"Post-matric scholarship for OBC, EBC and DNT students, routed through State/UT governments.",
+  "eligibility_text":"OBC, EBC or DNT student (as notified); studying after Class 10; family income up to ₹2.5 lakh per annum.",
+  "income_limit":250000,
+  "amount_text":"Varies by course group – exact rates not confirmed in this build; see the official guidelines.",
+  "benefits":"Academic allowance and tuition fee support (see guidelines).",
+  "documents":"Income certificate, caste certificate, marksheets, bank details (confirm on NSP).",
+  "start_date":"2026-06-01","deadline":"2026-10-31",
+  "apply_url":"https://scholarships.gov.in","source_url":"https://www.myscheme.gov.in/schemes/pm-yasasvipmsobcebcdnts",
+  "verification_status":"verified",
+  "verification_note":"Income limit confirmed on myScheme/PIB. Deadline reported by secondary sources; amount not confirmed.",
+  "rules":[
+   {"field":"category","operator":"not_in","value":["SC","ST"],"hard":true,"message":"Only for OBC/EBC/DNT students, not SC/ST."},
+   {"field":"category","operator":"in","value":["OBC"],"hard":false,"message":"Only OBC is confirmed from your profile. EBC/DNT status depends on your state's notification – verify."},
+   {"field":"edu_level","operator":"in","value":["Class 11-12","Diploma","Undergraduate","Postgraduate","PhD"],"hard":true,"message":"Only for post-matric (after Class 10) courses."},
+   {"field":"annual_income","operator":"lte","value":250000,"hard":true,"message":"Family income must be up to ₹2.5 lakh per annum."}
+  ]
+ },
+ {
+  "slug":"pms-sc","name":"Post-Matric Scholarship for Scheduled Caste Students",
+  "department":"Ministry of Social Justice and Empowerment","scope":"Central","state":null,"scheme_type":"Post-Matric",
+  "description":"Covers fees and maintenance allowance for SC students pursuing post-matric courses.",
+  "eligibility_text":"SC student studying after Class 10. Income ceiling was ₹2.5 lakh per annum through 2025-26; a revision for 2026-27 onwards has been under consideration.",
+  "income_limit":250000,
+  "amount_text":"Not verified – rates vary by course group; see NSP guidelines.",
+  "benefits":"Course fee reimbursement and maintenance allowance.",
+  "documents":"Caste certificate, income certificate, marksheets, bank details.",
+  "start_date":"2026-06-01","deadline":null,
+  "apply_url":"https://scholarships.gov.in","source_url":"https://scholarships.gov.in",
+  "verification_status":"needs_confirmation",
+  "verification_note":"₹2.5 lakh ceiling confirmed up to 2025-26; whether it changed for 2026-27 could not be confirmed. Deadline not confirmed.",
+  "rules":[
+   {"field":"category","operator":"eq","value":"SC","hard":true,"message":"Only for Scheduled Caste students."},
+   {"field":"edu_level","operator":"in","value":["Class 11-12","Diploma","Undergraduate","Postgraduate","PhD"],"hard":true,"message":"Only for post-matric courses."},
+   {"field":"annual_income","operator":"lte","value":250000,"hard":true,"message":"Family income must be up to ₹2.5 lakh per annum (limit may have been revised)."}
+  ]
+ },
+ {
+  "slug":"pms-st","name":"Post-Matric Scholarship for Scheduled Tribe Students",
+  "department":"Ministry of Tribal Affairs","scope":"Central","state":null,"scheme_type":"Post-Matric",
+  "description":"Post-matric scholarship for ST students.",
+  "eligibility_text":"ST student studying after Class 10; parental income ceiling reported as ₹2.5 lakh, with a proposal to raise it to ₹4.5 lakh.",
+  "income_limit":250000,
+  "amount_text":"Not verified – see NSP guidelines.","benefits":"Not verified.","documents":"Caste certificate, income certificate, marksheets, bank details.",
+  "start_date":"2026-06-01","deadline":null,
+  "apply_url":"https://scholarships.gov.in","source_url":"https://scholarships.gov.in",
+  "verification_status":"needs_confirmation",
+  "verification_note":"Income limit from secondary sources; a revision to ₹4.5 lakh was proposed. Confirm on NSP.",
+  "rules":[
+   {"field":"category","operator":"eq","value":"ST","hard":true,"message":"Only for Scheduled Tribe students."},
+   {"field":"edu_level","operator":"in","value":["Class 11-12","Diploma","Undergraduate","Postgraduate","PhD"],"hard":true,"message":"Only for post-matric courses."},
+   {"field":"annual_income","operator":"lte","value":250000,"hard":true,"message":"Family income must be within the limit (₹2.5 lakh reported; may be revised)."}
+  ]
+ },
+ {
+  "slug":"pms-pwd","name":"Post-Matric Scholarship for Students with Disabilities",
+  "department":"Department of Empowerment of Persons with Disabilities","scope":"Central","state":null,"scheme_type":"Disability",
+  "description":"Post-matric support for students with benchmark disability.",
+  "eligibility_text":"Benchmark disability (40% or above); Class 11 onwards including diploma, UG, PG; family income up to ₹2.5 lakh per annum.",
+  "income_limit":250000,
+  "amount_text":"Not verified – see NSP guidelines.","benefits":"Not verified.","documents":"Disability certificate, income certificate, marksheets, bank details.",
+  "start_date":"2026-06-01","deadline":null,
+  "apply_url":"https://scholarships.gov.in","source_url":"https://scholarships.gov.in",
+  "verification_status":"needs_confirmation",
+  "verification_note":"Criteria from a secondary NSP summary only; confirm on NSP.",
+  "rules":[
+   {"field":"disability_percent","operator":"gte","value":40,"hard":true,"message":"Requires a benchmark disability of at least 40%."},
+   {"field":"edu_level","operator":"in","value":["Class 11-12","Diploma","Undergraduate","Postgraduate","PhD"],"hard":true,"message":"Only for Class 11 onwards."},
+   {"field":"annual_income","operator":"lte","value":250000,"hard":true,"message":"Family income must be up to ₹2.5 lakh per annum."}
+  ]
+ },
+ {
+  "slug":"mcm-minority","name":"Merit-cum-Means Scholarship for Professional and Technical Courses (Minorities)",
+  "department":"Ministry of Minority Affairs","scope":"Central","state":null,"scheme_type":"Minority",
+  "description":"For minority students in professional/technical UG and PG courses. 30% of scholarships are earmarked for girls.",
+  "eligibility_text":"Belong to a notified minority community; at least 50% marks in the previous exam; admitted to a professional/technical course; family income up to ₹2.5 lakh per annum; no other scholarship.",
+  "income_limit":250000,
+  "amount_text":"Course fee up to ₹20,000 per year (per myScheme); maintenance allowance details not verified.",
+  "benefits":"Course fee and maintenance allowance.","documents":"Minority self-declaration, income certificate, marksheets.",
+  "start_date":null,"deadline":null,
+  "apply_url":"https://scholarships.gov.in","source_url":"https://myscheme.gov.in/hi/schemes/mcm-min",
+  "verification_status":"needs_confirmation",
+  "verification_note":"Union Budget 2026-27 reportedly cut this scheme's outlay to almost nil; confirm that it is accepting applications.",
+  "rules":[
+   {"field":"is_minority","operator":"eq","value":1,"hard":true,"message":"Only for notified minority communities."},
+   {"field":"edu_level","operator":"in","value":["Undergraduate","Postgraduate"],"hard":true,"message":"Only for UG/PG professional courses."},
+   {"field":"course_type","operator":"in","value":["Technical/Engineering","Medical","Management","Law"],"hard":true,"message":"Only for professional/technical courses."},
+   {"field":"annual_income","operator":"lte","value":250000,"hard":true,"message":"Family income must be up to ₹2.5 lakh per annum."},
+   {"field":"prev_percentage","operator":"gte","value":50,"hard":true,"message":"At least 50% marks in the previous exam."},
+   {"field":"other_scholarship","operator":"eq","value":0,"hard":true,"message":"You must not be availing another scholarship."}
+  ]
+ },
+ {
+  "slug":"nmmss","name":"National Means-cum-Merit Scholarship Scheme (NMMSS)",
+  "department":"Ministry of Education – Dept of School Education & Literacy","scope":"Central","state":null,"scheme_type":"Pre-Matric / Merit",
+  "description":"For selected meritorious students from economically weaker sections to reduce dropout after Class 8.",
+  "eligibility_text":"Selection through a state-level exam for Class 9; income limit not confirmed here.",
+  "income_limit":null,
+  "amount_text":"₹12,000 per annum.","benefits":"Scholarship through NSP.","documents":"Not verified.",
+  "start_date":"2026-06-01","deadline":null,
+  "apply_url":"https://scholarships.gov.in","source_url":"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2317657",
+  "verification_status":"needs_confirmation",
+  "verification_note":"Amount confirmed by PIB. Deadline was extended more than once and sources conflict – check NSP. Income limit not verified.",
+  "rules":[
+   {"field":"edu_level","operator":"in","value":["Class 9-10","Class 11-12"],"hard":true,"message":"For school students (Class 9–12) only."},
+   {"field":"_manual","operator":"manual","value":"selection","hard":false,"message":"Only students selected through the state-level selection test can apply."}
+  ]
+ },
+ {
+  "slug":"tn-pudhumai-penn","name":"Pudhumai Penn Scheme (Moovalur Ramamirtham Ammaiyar Higher Education Assurance Scheme)",
+  "department":"Department of Social Welfare & Women Empowerment, Government of Tamil Nadu","scope":"State","state":"Tamil Nadu","scheme_type":"State",
+  "description":"Monthly assistance for girls from government schools who enrol in higher education.",
+  "eligibility_text":"Tamil Nadu girl students who studied Classes 6 to 12 in government schools (extended to government-aided schools); pursuing UG degree/diploma/ITI or other recognised course. Applications are routed through the institution.",
+  "income_limit":null,
+  "amount_text":"₹1,000 per month.","benefits":"Direct credit to bank account until course completion.","documents":"School study certificates (Class 6–12), bank details, mobile number.",
+  "start_date":null,"deadline":null,
+  "apply_url":"https://pudhumaipenn.tn.gov.in","source_url":"https://dte.tn.gov.in/pudhumai-penn-schemes",
+  "verification_status":"verified",
+  "verification_note":"Benefit and school-study condition from TN government pages; no income limit found. Dates not published in sources – confirm with your college.",
+  "rules":[
+   {"field":"state","operator":"eq","value":"Tamil Nadu","hard":true,"message":"Only for Tamil Nadu students."},
+   {"field":"gender","operator":"eq","value":"Female","hard":true,"message":"Only for girl students."},
+   {"field":"govt_school_6_12","operator":"eq","value":1,"hard":true,"message":"Must have studied Classes 6–12 in government (or government-aided) schools."},
+   {"field":"edu_level","operator":"in","value":["Diploma","Undergraduate"],"hard":true,"message":"Only for diploma/UG courses (per sources reviewed)."}
+  ]
+ },
+ {
+  "slug":"tn-tamil-pudhalvan","name":"Tamil Pudhalvan Scheme",
+  "department":"Government of Tamil Nadu","scope":"State","state":"Tamil Nadu","scheme_type":"State",
+  "description":"Monthly assistance for boys from government/government-aided schools pursuing higher education.",
+  "eligibility_text":"Tamil Nadu boys who studied Classes 6–12 in government or government-aided schools; full conditions not fully confirmed.",
+  "income_limit":null,
+  "amount_text":"₹1,000 per month.","benefits":"Monthly assistance.","documents":"Not verified.",
+  "start_date":null,"deadline":null,
+  "apply_url":null,"source_url":"https://www.tribuneindia.com/news/india/tamil-nadu-cm-launches-rs-1000-monthly-assistance-scheme-for-boys/amp",
+  "verification_status":"needs_confirmation",
+  "verification_note":"Verified from news coverage and a college notice only; official portal not found. Apply link unavailable.",
+  "rules":[
+   {"field":"state","operator":"eq","value":"Tamil Nadu","hard":true,"message":"Only for Tamil Nadu students."},
+   {"field":"gender","operator":"eq","value":"Male","hard":true,"message":"Only for boys."},
+   {"field":"govt_school_6_12","operator":"eq","value":1,"hard":true,"message":"Must have studied Classes 6–12 in government/government-aided schools."},
+   {"field":"edu_level","operator":"in","value":["Diploma","Undergraduate"],"hard":true,"message":"Only for UG/diploma courses."}
+  ]
+ }
+]
