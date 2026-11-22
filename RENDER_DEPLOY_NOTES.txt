@@ -1,0 +1,12 @@
+Render settings:
+- Runtime: Python 3
+- Build command: pip install -r requirements.txt
+- Start command: gunicorn app:app
+- Root directory: leave blank (these files belong at repository root)
+
+IMPORTANT:
+This package uses SQLite. On Render free web services the filesystem is ephemeral,
+so student accounts, saved scholarships, and admin changes may be lost on restart,
+redeploy, or instance replacement. Use a durable external database before relying
+on this for real users. Set SECRET_KEY and ADMIN_PASSWORD as Render environment
+variables; do not commit secrets to GitHub. Change the initial admin password.
