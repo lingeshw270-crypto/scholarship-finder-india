@@ -508,12 +508,9 @@ def build_pdf(sc):
     return buf
 
 
-# WSGI entry point for Render/Gunicorn.
-app = create_app()
-if not os.path.exists(app.config["DATABASE"]):
-    admin_password = dbm.init_db(app.config["DATABASE"])
-    if admin_password:
-        print(f"Database created. Admin username: admin; initial password: {admin_password}")
-
 if __name__ == "__main__":
+    app = create_app()
+    if not os.path.exists(app.config["DATABASE"]):
+        pw = dbm.init_db(app.config["DATABASE"])
+        print(f"Database created. Admin password (shown once): {pw}")
     app.run(debug=os.environ.get("FLASK_DEBUG") == "1")
