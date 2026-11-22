@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% from '_macros.html' import pill %}{% block title %}Browse scholarships{% endblock %}{% block content %}
+<h1 class="h2">Browse scholarships</h1>
+<form method="get" class="card-s"><div class="row g-2">
+ <div class="col-md-3"><input name="q" class="form-control" placeholder="Search by name" value="{{ args.get('q','') }}"></div>
+ <div class="col-md-2"><select name="state" class="form-select"><option value="">Any state</option>{% for s in states %}<option {{ 'selected' if args.get('state')==s }}>{{ s }}</option>{% endfor %}</select></div>
+ <div class="col-md-2"><select name="category" class="form-select"><option value="">Any category</option>{% for c in categories %}<option {{ 'selected' if args.get('category')==c }}>{{ c }}</option>{% endfor %}</select></div>
+ <div class="col-md-2"><select name="level" class="form-select"><option value="">Any level</option>{% for l in levels %}<option {{ 'selected' if args.get('level')==l }}>{{ l }}</option>{% endfor %}</select></div>
+ <div class="col-md-2"><input type="number" name="income" class="form-control" placeholder="Family income ₹" value="{{ args.get('income','') }}"></div>
+ <div class="col-md-1"><button class="btn btn-navy w-100">Go</button></div></div></form>
+<form method="get" action="{{ url_for('compare') }}">
+{% for sc in items %}<div class="card-s"><div class="d-flex justify-content-between gap-2"><div>
+ <h2 class="h5 mb-1"><a class="text-decoration-none" href="{{ url_for('scholarship_detail', sid=sc.id) }}">{{ sc.name }}</a></h2>
+ <div class="meta">{{ sc.department }} · {{ sc.scope }}{% if sc.state %} ({{ sc.state }}){% endif %}</div>
+ <div class="mt-1">{{ pill(sc) }}</div></div>
+ <div class="form-check"><input class="form-check-input" type="checkbox" name="id" value="{{ sc.id }}" id="c{{ sc.id }}"><label class="form-check-label small" for="c{{ sc.id }}">Compare</label></div></div></div>
+{% else %}<p>No scholarships match these filters.</p>{% endfor %}
+{% if items %}<button class="btn btn-outline-navy">Compare selected (2–3)</button>{% endif %}</form>{% endblock %}

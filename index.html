@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block content %}
+<section class="hero rounded p-4 p-lg-5 mb-4"><div class="row align-items-center g-4">
+ <div class="col-lg-7"><h1>Find the government scholarships you can actually apply for.</h1>
+  <p class="lead mt-3 mb-4" style="max-width:52ch">Enter your details once. We check them against the rules of {{ count }} Central and State schemes and tell you where you stand, with reasons.</p>
+  <a href="{{ url_for('register') }}" class="btn btn-navy btn-lg me-2">Check my eligibility</a>
+  <a href="{{ url_for('scholarships') }}" class="btn btn-outline-navy btn-lg">Browse schemes</a></div>
+ <div class="col-lg-5">
+  <div class="verdict ok"><b>Eligible</b><span class="meta">Every rule passed and the scheme's rules are verified from official sources.</span></div>
+  <div class="verdict maybe"><b>Potentially eligible</b><span class="meta">Something is missing or needs checking, or the scheme's rules are not fully confirmed.</span></div>
+  <div class="verdict no"><b>Not eligible</b><span class="meta">Shown with the exact rule that rules you out.</span></div>
+ </div></div></section>
+<div class="row g-3">
+ <div class="col-md-4"><div class="card-s h-100"><h2 class="h5">No guessing</h2><p class="mb-0">Amounts, deadlines and links come from official pages. Anything we could not confirm is marked "Not verified" instead of filled in.</p></div></div>
+ <div class="col-md-4"><div class="card-s h-100"><h2 class="h5">Your data stays private</h2><p class="mb-0">Your profile is visible only to you. You can delete your account and data at any time.</p></div></div>
+ <div class="col-md-4"><div class="card-s h-100"><h2 class="h5">Track the whole process</h2><p class="mb-0">Save schemes, keep a document checklist and track each application's status.</p></div></div>
+</div>{% endblock %}

@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% from '_macros.html' import pill %}{% block title %}Saved{% endblock %}{% block content %}<h1 class="h2">Saved scholarships</h1>
+{% for sc in items %}<div class="card-s d-flex justify-content-between gap-2"><div><a class="h5 text-decoration-none" href="{{ url_for('scholarship_detail', sid=sc.id) }}">{{ sc.name }}</a><div class="meta">Deadline: {{ fmt_date(sc.deadline) }}</div>{{ pill(sc) }}</div>
+<form method="post" action="{{ url_for('unsave', sid=sc.id) }}"><input type="hidden" name="csrf" value="{{ csrf_token() }}"><button class="btn btn-sm btn-outline-secondary">Remove</button></form></div>
+{% else %}<p>You have not saved any scholarships yet. <a href="{{ url_for('dashboard') }}">See your results</a>.</p>{% endfor %}{% endblock %}

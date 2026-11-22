@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block title %}Create account – Scholarship Finder{% endblock %}{% block content %}
+<h1 class="h2">Create your profile</h1><p class="meta">Fields you skip or mark "Not sure" are never guessed; they move schemes to "Potentially eligible" so you know what to verify.</p>
+<form method="post" class="card-s" novalidate><input type="hidden" name="csrf" value="{{ csrf_token() }}">
+{% set new = true %}{% include '_student_fields.html' %}
+<button class="btn btn-navy mt-4">Create account and see results</button></form>{% endblock %}
+{% block scripts %}{% include '_age_js.html' %}{% endblock %}

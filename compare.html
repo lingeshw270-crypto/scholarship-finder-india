@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% block title %}Compare{% endblock %}{% block content %}<h1 class="h2">Compare scholarships</h1>
+<div class="table-responsive card-s"><table class="table align-top"><thead><tr><th></th>{% for sc in items %}<th><a href="{{ url_for('scholarship_detail', sid=sc.id) }}">{{ sc.name }}</a></th>{% endfor %}</tr></thead><tbody>
+{% for label, key in [('Department','department'),('Type','scheme_type'),('Eligibility','eligibility_text'),('Amount','amount_text'),('Benefits','benefits')] %}
+<tr><th>{{ label }}</th>{% for sc in items %}<td>{{ sc[key] or 'Not verified' }}</td>{% endfor %}</tr>{% endfor %}
+<tr><th>Income limit</th>{% for sc in items %}<td>{% if sc.income_limit %}₹{{ '{:,}'.format(sc.income_limit) }}{% else %}Not verified{% endif %}</td>{% endfor %}</tr>
+<tr><th>Deadline</th>{% for sc in items %}<td>{{ fmt_date(sc.deadline) }}</td>{% endfor %}</tr>
+<tr><th>Rules status</th>{% for sc in items %}<td>{{ 'Verified' if sc.verification_status=='verified' else 'Needs confirmation' }}</td>{% endfor %}</tr>
+</tbody></table></div>{% endblock %}

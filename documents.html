@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block title %}Document checklist{% endblock %}{% block content %}<h1 class="h2">Document checklist</h1>
+<p class="meta">A general checklist for NSP-style applications. Each scheme lists its own required documents on its detail page.</p>
+<form method="post" class="card-s"><input type="hidden" name="csrf" value="{{ csrf_token() }}">
+{% for d in rows %}<div class="form-check mb-2"><input class="form-check-input" type="checkbox" name="ready" value="{{ d.id }}" id="d{{ d.id }}" {{ 'checked' if d.is_ready }}><label class="form-check-label" for="d{{ d.id }}">{{ d.doc_name }}</label></div>{% endfor %}
+<button class="btn btn-navy mt-2">Save checklist</button></form>
+<form method="post" class="d-flex gap-2"><input type="hidden" name="csrf" value="{{ csrf_token() }}"><input name="new_doc" class="form-control" maxlength="100" placeholder="Add another document"><button class="btn btn-outline-navy">Add</button></form>{% endblock %}

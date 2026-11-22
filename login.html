@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block title %}Log in{% endblock %}{% block content %}
+<div class="row justify-content-center"><div class="col-md-5"><h1 class="h3">Student log in</h1>
+<form method="post" class="card-s"><input type="hidden" name="csrf" value="{{ csrf_token() }}">
+<label class="form-label">Email</label><input type="email" name="email" class="form-control mb-3" required>
+<label class="form-label">Password</label><input type="password" name="password" class="form-control mb-3" required>
+<button class="btn btn-navy w-100">Log in</button><p class="meta mt-3 mb-0">New here? <a href="{{ url_for('register') }}">Create a profile</a></p></form></div></div>{% endblock %}

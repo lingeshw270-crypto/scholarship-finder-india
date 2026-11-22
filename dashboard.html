@@ -1,0 +1,11 @@
+{% extends 'base.html' %}{% from '_macros.html' import result_card %}{% block title %}My results{% endblock %}{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-2"><div><h1 class="h2 mb-1">Hello, {{ s.full_name.split()[0] }}</h1>
+<div class="meta">{{ age }} years · {{ s.category }}{% if s.is_minority %} · Minority{% endif %} · {{ s.state }} · {{ s.edu_level }} ({{ s.course_name }}) · Income ₹{{ '{:,}'.format(s.annual_income) }}</div></div>
+<a href="{{ url_for('profile') }}" class="btn btn-outline-navy btn-sm">Update profile</a></div>
+<div class="alert alert-info mt-3 mb-0">Eligibility here is a screening based on published rules. The authority that processes your application makes the final decision. State schemes of other states are hidden.</div>
+<h2 class="h4 section-title"><span class="pill ok">{{ results.eligible|length }}</span> Eligible</h2>
+{% for r in results.eligible %}{{ result_card(r,'ok',saved) }}{% else %}<p class="meta">No scheme is fully confirmed for you yet. Check "Potentially eligible" below; this is expected while some scheme rules are still unconfirmed.</p>{% endfor %}
+<h2 class="h4 section-title"><span class="pill maybe">{{ results.potential|length }}</span> Potentially eligible</h2>
+{% for r in results.potential %}{{ result_card(r,'maybe',saved) }}{% else %}<p class="meta">Nothing here.</p>{% endfor %}
+<h2 class="h4 section-title"><span class="pill no">{{ results.not_eligible|length }}</span> Not eligible</h2>
+{% for r in results.not_eligible %}{{ result_card(r,'no',saved) }}{% else %}<p class="meta">Nothing here.</p>{% endfor %}{% endblock %}

@@ -1,0 +1,6 @@
+<script>
+(function(){var d=document.getElementById('dob'),a=document.getElementById('age');if(!d)return;
+function u(){if(!d.value){a.value='';return}var b=new Date(d.value),t=new Date(),n=t.getFullYear()-b.getFullYear();
+var m=t.getMonth()-b.getMonth();if(m<0||(m===0&&t.getDate()<b.getDate()))n--;a.value=isNaN(n)?'':n+' years'}
+d.addEventListener('input',u);u()})();
+</script>

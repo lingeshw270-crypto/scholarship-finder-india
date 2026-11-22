@@ -1,0 +1,23 @@
+{% extends 'base.html' %}{% from '_macros.html' import pill %}{% block title %}{{ sc.name }}{% endblock %}{% block content %}
+<h1 class="h3">{{ sc.name }}</h1><div class="meta mb-2">{{ sc.department }} · {{ sc.scope }}{% if sc.state %} ({{ sc.state }}){% endif %} · {{ sc.scheme_type }}</div>
+<div class="mb-3">{{ pill(sc) }}</div>
+{% if res %}<div class="card-s {{ {'eligible':'ok','potential':'maybe','not_eligible':'no'}[res.status] }}"><b>Your result: {{ res.status.replace('_',' ').capitalize() }}</b>
+ <ul class="reasons">{% for m in res.failed %}<li>{{ m }}</li>{% endfor %}{% for m in res.verify %}<li>{{ m }}</li>{% endfor %}</ul></div>{% endif %}
+<div class="card-s"><table class="table table-borderless mb-0"><tbody>
+<tr><th style="width:200px">Scheme description</th><td>{{ sc.description }}</td></tr>
+<tr><th>Eligibility criteria</th><td>{{ sc.eligibility_text }}</td></tr>
+<tr><th>Income limit</th><td>{% if sc.income_limit %}₹{{ '{:,}'.format(sc.income_limit) }} per annum{% else %}Not verified / not applicable{% endif %}</td></tr>
+<tr><th>Scholarship amount</th><td>{{ sc.amount_text }}</td></tr>
+<tr><th>Benefits</th><td>{{ sc.benefits or 'Not verified' }}</td></tr>
+<tr><th>Required documents</th><td>{{ sc.documents or 'Not verified' }}</td></tr>
+<tr><th>Application start</th><td>{{ fmt_date(sc.start_date) }}</td></tr>
+<tr><th>Application deadline</th><td>{{ fmt_date(sc.deadline) }}</td></tr>
+<tr><th>Official website</th><td>{% if sc.apply_url %}<a href="{{ sc.apply_url }}" target="_blank" rel="noopener">{{ sc.apply_url }}</a>{% else %}Not available{% endif %}</td></tr>
+<tr><th>Source reviewed</th><td>{% if sc.source_url %}<a href="{{ sc.source_url }}" target="_blank" rel="noopener">{{ sc.source_url }}</a>{% else %}–{% endif %}</td></tr>
+<tr><th>Last verified</th><td>{{ fmt_date(sc.last_verified, 'Unknown') }}</td></tr>
+<tr><th>Verification note</th><td>{{ sc.verification_note or '–' }}</td></tr></tbody></table></div>
+<div class="d-flex flex-wrap gap-2">
+ {% if sc.apply_url %}<a class="btn btn-navy" href="{{ sc.apply_url }}" target="_blank" rel="noopener">Apply on official site</a>{% endif %}
+ <a class="btn btn-outline-navy" href="{{ url_for('scholarship_pdf', sid=sc.id) }}"><i class="fa-solid fa-file-pdf"></i> Download PDF</a>
+ {% if session.uid %}<form method="post" action="{{ url_for('unsave' if saved else 'save', sid=sc.id) }}"><input type="hidden" name="csrf" value="{{ csrf_token() }}"><button class="btn btn-outline-secondary">{{ 'Remove from saved' if saved else 'Save scholarship' }}</button></form>{% endif %}
+</div>{% endblock %}

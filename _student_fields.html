@@ -1,0 +1,40 @@
+{% macro err(k) %}{% if errors.get(k) %}<div class="text-danger small">{{ errors[k] }}</div>{% endif %}{% endmacro %}
+{% macro yn(name, label, help) %}
+<div class="col-md-4"><label class="form-label">{{ label }}</label>
+ <select name="{{ name }}" class="form-select">{% set v = f.get(name) %}
+  <option value="">Not sure</option><option value="yes" {{ 'selected' if v in (1,'1','yes') }}>Yes</option><option value="no" {{ 'selected' if v in (0,'0','no') }}>No</option></select>
+ <div class="form-text">{{ help }}</div></div>{% endmacro %}
+<h2 class="h5 section-title">Personal details</h2>
+<div class="row g-3">
+ <div class="col-md-6"><label class="form-label">Full name</label><input name="full_name" class="form-control" value="{{ f.get('full_name','') }}" required>{{ err('full_name') }}</div>
+ {% if new %}
+ <div class="col-md-6"><label class="form-label">Email</label><input type="email" name="email" class="form-control" value="{{ f.get('email','') }}" required>{{ err('email') }}</div>
+ <div class="col-md-6"><label class="form-label">Password</label><input type="password" name="password" class="form-control" minlength="8" autocomplete="new-password" required><div class="form-text">At least 8 characters, with letters and a number.</div>{{ err('password') }}</div>
+ {% endif %}
+ <div class="col-md-3"><label class="form-label">Date of birth</label><input type="date" id="dob" name="dob" class="form-control" value="{{ f.get('dob','') }}" required>{{ err('dob') }}</div>
+ <div class="col-md-3"><label class="form-label">Age</label><input id="age" class="form-control" readonly placeholder="Calculated"></div>
+ <div class="col-md-3"><label class="form-label">Gender</label><select name="gender" class="form-select" required><option value="">Select</option>{% for g in ['Male','Female','Other'] %}<option {{ 'selected' if f.get('gender')==g }}>{{ g }}</option>{% endfor %}</select>{{ err('gender') }}</div>
+ <div class="col-md-3"><label class="form-label">State / UT</label><select name="state" class="form-select" required><option value="">Select</option>{% for s in states %}<option {{ 'selected' if f.get('state')==s }}>{{ s }}</option>{% endfor %}</select>{{ err('state') }}</div>
+ <div class="col-md-3"><label class="form-label">District</label><input name="district" class="form-control" value="{{ f.get('district','') }}" required>{{ err('district') }}</div>
+ <div class="col-md-3"><label class="form-label">Category</label><select name="category" class="form-select" required><option value="">Select</option>{% for c in categories %}<option {{ 'selected' if f.get('category')==c }}>{{ c }}</option>{% endfor %}</select>{{ err('category') }}</div>
+ <div class="col-md-3"><label class="form-label">Annual family income (₹)</label><input type="number" min="0" name="annual_income" class="form-control" value="{{ f.get('annual_income','') }}" required>{{ err('annual_income') }}</div>
+ <div class="col-md-3"><label class="form-label">Disability % (optional)</label><input type="number" min="0" max="100" name="disability_percent" class="form-control" value="{{ f.get('disability_percent','') if f.get('disability_percent') not in (0,'0') else '' }}">{{ err('disability_percent') }}</div>
+ <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" name="is_minority" id="mn" {{ 'checked' if f.get('is_minority') in (1,'1','on') }}><label class="form-check-label" for="mn">I belong to a notified minority community (Muslim, Christian, Sikh, Buddhist, Jain or Parsi)</label></div>
+  <div class="form-text">Minority status is separate from your caste category, so it is asked here.</div></div>
+</div>
+<h2 class="h5 section-title">Educational details</h2>
+<div class="row g-3">
+ <div class="col-md-4"><label class="form-label">Current education level</label><select name="edu_level" class="form-select" required><option value="">Select</option>{% for l in levels %}<option {{ 'selected' if f.get('edu_level')==l }}>{{ l }}</option>{% endfor %}</select>{{ err('edu_level') }}</div>
+ <div class="col-md-4"><label class="form-label">Course name</label><input name="course_name" class="form-control" value="{{ f.get('course_name','') }}" required>{{ err('course_name') }}</div>
+ <div class="col-md-4"><label class="form-label">Course type</label><select name="course_type" class="form-select">{% for c in course_types %}<option {{ 'selected' if f.get('course_type')==c }}>{{ c }}</option>{% endfor %}</select></div>
+ <div class="col-md-4"><label class="form-label">College name</label><input name="college_name" class="form-control" value="{{ f.get('college_name','') }}" required>{{ err('college_name') }}</div>
+ <div class="col-md-4"><label class="form-label">University name</label><input name="university_name" class="form-control" value="{{ f.get('university_name','') }}"></div>
+ <div class="col-md-4"><label class="form-label">Current academic year</label><input type="number" min="1" max="6" name="academic_year" class="form-control" value="{{ f.get('academic_year','') }}" required>{{ err('academic_year') }}</div>
+ <div class="col-md-3"><label class="form-label">Previous exam %</label><input type="number" step="0.01" min="0" max="100" name="prev_percentage" class="form-control" value="{{ f.get('prev_percentage','') if f.get('prev_percentage') is not none else '' }}">{{ err('prev_percentage') }}</div>
+ <div class="col-md-3"><label class="form-label">10th marks %</label><input type="number" step="0.01" min="0" max="100" name="marks_10" class="form-control" value="{{ f.get('marks_10','') if f.get('marks_10') is not none else '' }}">{{ err('marks_10') }}</div>
+ <div class="col-md-3"><label class="form-label">12th marks %</label><input type="number" step="0.01" min="0" max="100" name="marks_12" class="form-control" value="{{ f.get('marks_12','') if f.get('marks_12') is not none else '' }}">{{ err('marks_12') }}</div>
+ <div class="col-md-3"><label class="form-label">Admission type</label><select name="admission_type" class="form-select">{% for a in admission_types %}<option {{ 'selected' if f.get('admission_type')==a }}>{{ a }}</option>{% endfor %}</select></div>
+ {{ yn('aicte_approved','Is your college AICTE-approved?','Needed for AICTE schemes.') }}
+ {{ yn('govt_school_6_12','Studied Classes 6–12 in government schools?','Needed for some state schemes.') }}
+ {{ yn('other_scholarship','Already receiving another scholarship?','Many schemes disallow a second one.') }}
+</div>

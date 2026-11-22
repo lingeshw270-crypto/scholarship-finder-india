@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block title %}Application tracking{% endblock %}{% block content %}<h1 class="h2">Application tracking</h1>
+<form method="post" class="card-s"><input type="hidden" name="csrf" value="{{ csrf_token() }}"><div class="row g-2 align-items-end">
+<div class="col-md-4"><label class="form-label">Saved scholarship</label><select name="scholarship_id" class="form-select" required>{% for o in options %}<option value="{{ o.id }}">{{ o.name }}</option>{% endfor %}</select></div>
+<div class="col-md-3"><label class="form-label">Status</label><select name="status" class="form-select">{% for s in statuses %}<option>{{ s }}</option>{% endfor %}</select></div>
+<div class="col-md-3"><label class="form-label">Notes</label><input name="notes" maxlength="500" class="form-control"></div>
+<div class="col-md-2"><button class="btn btn-navy w-100" {{ 'disabled' if not options }}>Update</button></div></div>
+{% if not options %}<div class="form-text">Save a scholarship first to track it.</div>{% endif %}</form>
+{% for r in rows %}<div class="card-s d-flex justify-content-between"><div><b>{{ r.name }}</b><div class="meta">{{ r.notes or 'No notes' }} · updated {{ r.updated_at[:10] }}</div></div><span class="pill grey align-self-start">{{ r.status }}</span></div>
+{% else %}<p class="meta">No applications tracked yet.</p>{% endfor %}{% endblock %}
